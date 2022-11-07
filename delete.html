@@ -19,27 +19,18 @@
     :root{
 /*        GLOBAL*/
 /*        COLORS*/
-        
-        --secondary2: #7DE5ED;
-        --secondary: #81C6E8;
         --primary: #5DA7DB;
-        --primary2: #5837D0;
-        
-        --background: #222;
-        --text: #eee;  
-        --highlight: var(--primary2);
-        --hint: rgba(50,50,50,0.5);
+        --secondary: #5837D0;
         
         --white: #fff;
-        --black: #000;
-        --gray: #333;
-        --light: #ccc;
+        --light: #eee;
         
-        --activeT: var(--primary2);
-        --active: var(--gray);
-        --logoH: var(--light);
-        --logoB: #fff;
-        --cardB: var(--gray);
+        --black: #000;
+        --grey: #333;
+        
+        --background: #fff;
+        --text: #000;
+        
         
 /*        FONT*/
         --fm: Monospace;
@@ -55,7 +46,47 @@
         
 /*        MENU*/
         --menu-height: 80px;
+        --menu-background: transparent;
         
+        --menu-logo-color: var(--secondary);
+        --menu-logo-background: #eee;
+        --menu-logo-hover: #aaa;
+        
+        --menu-link-color: var(--text);
+        --menu-link-background: #eee;
+        --menu-link-hover: var(--primary);
+        
+        --menu-active-color: var(--secondary);
+        --menu-active-background: #ddd;
+        
+        --menu-slider-background: var(--black);
+        
+/*        MENU MOBILE*/
+        --menu-mobile-background: var(--white);
+        
+        --menu-mobile-burger-color: var(--black);
+        --menu-mobile-burger-hover: var(--grey);
+        --menu-mobile-burger-active: var(--black);
+        --menu-mobile-burger-active-hover: #555;
+        
+/*        HEADER*/
+        --header-primary: var(--primary);
+        --header-secondary: var(--secondary);
+        --header-angle: 135deg;
+        
+        --header-title: #fff;
+        --header-hint: rgba(50,50,50,0.8);
+        
+/*        CARDS*/
+        --cards-background: var(--light);
+        --cards-border: var(--secondary);
+        --cards-title-hover: var(--primary);
+        
+/*        FOOTER*/
+        --footer-primary: var(--primary);
+        --footer-secondary: var(--background);
+        --footer-a-hover: var(--grey);
+        --footer-icons: var(--black);
     }   
     
     
@@ -213,14 +244,14 @@
         z-index: 999;
         width: 100%;
         height: var(--menu-height);
-/*        background: #343434;*/
+        background: var(--menu-background);
         display: flex;
         align-items: center;
     }
     
     menu #logo {
         position: absolute;
-        color: var(--highlight);
+        color: var(--menu-logo-color);
         padding: var(--p);
         margin: var(--m);
         margin-left: var(--side);
@@ -228,12 +259,12 @@
         width: 35px;
         height: 35px;
         text-align: center;
-        background: var(--logoB);
+        background: var(--menu-logo-background);
         border-radius: 50%;
         transition: all 0.3s ease;
     }
     menu #logo:hover{
-        background: var(--logoH);
+        background: var(--menu-logo-hover);
         border-radius: 0px;
     }
     menu nav{
@@ -241,20 +272,21 @@
         right: var(--side);
     }
     menu nav .link{
+        color: var(--menu-link-color);
         text-align: center;
-        background: var(--black);
+        background: var(--menu-link-background);
         padding: 10px 20px;
         border-radius: 40px;
         margin: 0 20px;
         transition: all 0.3s ease;
     }
     menu nav .link:hover{
-        color: var(--highlight);
+        color: var(--menu-link-hover);
         border-radius: 0px;
     }
     menu nav .active{
-        color: var(--activeT);
-        background: var(--active);
+        color: var(--menu-active-color);
+        background: var(--menu-active-background);
     }
     menu #slider{
         position: absolute;
@@ -262,7 +294,7 @@
         height: 3px;
         left: 0;
         bottom: 10px;
-        background: var(--white);
+        background: var(--menu-slider-background);
         transition: all 0.3s cubic-bezier(1,-0.48,.1,1.4);
         border-radius: 4px;
     }
@@ -277,8 +309,7 @@
             right: 0;
             width: 0vw;
             height: 100vh;
-            background: var(--background);
-            opacity: 0.9;
+            background: var(--menu-mobile-background);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -304,7 +335,7 @@
             left: -500%;
             width: 100%;
             height: 100%;
-            border-bottom: 3px solid var(--white);
+            border-bottom: 3px solid var(--menu-slider-background);
             transition: all 0.3s ease;
             
         }
@@ -327,7 +358,7 @@
             flex-direction: column;
             border-radius: 100%;
             padding: 6px;
-            border: 2px solid var(--white);
+            border: 2px solid var(--menu-mobile-burger-color);
             transition: all 0.3s ease;
         }
         #burger span{
@@ -335,62 +366,59 @@
             width: 90%;
             height: 2px;
             margin: 4px;
-            background: var(--white);
+            background: var(--menu-mobile-burger-color);
             transition: all 0.3s cubic-bezier(1,-0.48,.1,1.4);
         }
         #burger:hover{
-            border: 2px solid var(--light);
+            border: 2px solid var(--menu-mobile-burger-hover);
         }
         #burger:hover span:nth-child(1){
             transform: rotate(45deg) translate(7px, 7px);
-            background: var(--light);
+            background: var(--menu-mobile-burger-hover);
         }
         #burger:hover span:nth-child(2){
             transform: rotate(-45deg);
-            background: var(--light);
+            background: var(--menu-mobile-burger-hover);
         }
         #burger:hover span:nth-child(3){
             width: 120%;
             transform: translateY(28px);
-            background: var(--light);
+            background: var(--menu-mobile-burger-hover);
         }
         #burger.active{
-            border: 2px solid var(--black);
+            border: 2px solid var(--menu-mobile-burger-active);
             border-radius: 0;
         }
         #burger.active span:nth-child(1){
-            background: var(--black);
+            background: var(--menu-mobile-burger-active);
             transform: rotate(45deg) translate(7px, 7px);
         }
         #burger.active span:nth-child(2){
-            background: var(--black);
+            background: var(--menu-mobile-burger-active);
             transform: rotate(-45deg);
         }
         #burger.active span:nth-child(3){
-            background: var(--black);
+            background: var(--menu-mobile-burger-active);
             width: 120%;
             transform: translateY(28px);
         }
-        
-/*
         #burger.active:hover{
-            border: 2px solid var(--light);
+            border: 2px solid var(--menu-mobile-burger-active-hover);
         }
         #burger.active:hover span:nth-child(1){
-            background: var(--light);
+            background: var(--menu-mobile-burger-active-hover);
         }
         #burger.active:hover span:nth-child(2){
-            background: var(--light);
+            background: var(--menu-mobile-burger-active-hover);
         }
         #burger.active:hover span:nth-child(3){
-            background: var(--light);
+            background: var(--menu-mobile-burger-active-hover);
         }
-*/
     }
     header{
         position: relative;
         width: 100%;
-        background: linear-gradient(135deg, var(--primary), var(--primary2));
+        background: linear-gradient(var(--header-angle), var(--header-primary), var(--header-secondary));
         overflow: hidden;
     }
     header .row{
@@ -409,16 +437,18 @@
     header .row .col h1{
         text-align: start;
         margin-top: var(--side);
-        color: var(--black);
+        color: var(--header-title);
     }
     header .row .col p{
         text-align: start;
-        color: var(--hint);
+        color: var(--header-hint);
     }
     header svg {
         display: block;
     }
-    
+    header svg path {
+        fill: var(--background);
+    }
     
     content .row{
         overflow: hidden;
@@ -455,7 +485,7 @@
         position: relative;
         max-width: var(--maxw);
         min-width: calc(var(--minw)*0.7);
-        background: var(--gray);
+        background: var(--cards-background);
         border-radius: 20px;
         display: flex;
         flex-direction: column;
@@ -480,7 +510,7 @@
         bottom: 0;
         border-radius: 20px;
         z-index: -1;
-        background: var(--gray);
+        background: var(--cards-background);
     }
     cards .row .col:hover::after{
         border-radius: 0;
@@ -495,7 +525,7 @@
         bottom: -2%;
         border-radius: 20px;
         z-index: -2;
-        background: var(--highlight);
+        background: var(--cards-border);
         transition: all 0.3s ease;
     }
     cards .row .col:hover::before {
@@ -507,18 +537,21 @@
         transition: all 0.3s ease;
     }
     cards .row .col:hover .title2 {
-        color: var(--highlight);
+        color: var(--cards-title-hover);
     }
     
     
     footer {
         position: relative;
         width: 100%;
-        background: linear-gradient(135deg, var(--primary2), var(--background));
+        background: linear-gradient(135deg, var(--footer-primary), var(--footer-secondary));
         overflow: hidden;
     }
     footer svg {
         display: block;
+    }
+    footer svg path {
+        fill: var(--background);
     }
     footer .row {
         align-items: center;
@@ -537,7 +570,7 @@
     }
     footer .row .col a:hover {
         font-size: calc(var(--fs)*1.4);
-        color: var(--light);
+        color: var(--footer-a-hover);
     }
     footer .row {
         justify-content: center;
@@ -548,7 +581,7 @@
         transition: all 0.3s ease;
     }    
     footer .row a svg path,polygon {
-        fill: var(--white);
+        fill: var(--footer-icons);
         transition: all 0.3s ease;
     }
     footer .row a:nth-child(1) svg:hover path {
@@ -567,7 +600,7 @@
     footer .row:last-child div {
         width: 80px;
         height: 80px;
-        background: var(--white);
+        background: var(--menu-logo-background);
         border-radius: 100%;
         display: flex;
         justify-content: center;
@@ -575,7 +608,7 @@
     }
     footer .row:last-child div a {
         font-size: calc(var(--fs)*3);
-        color: var(--primary2);
+        color: var(--menu-logo-color);
         transition: all 0.3s ease;
     }
     footer .row:last-child div a:hover {
@@ -585,7 +618,7 @@
         margin-top: calc(var(--m)*2);
         font-family: "Roboto";
         font-size: calc(var(--fs)*0.7);
-        border-top: 1px solid white;
+        border-top: 1px solid var(--text);
     }
 </style>
 
@@ -594,7 +627,7 @@
     </head>
     <body>
         
-        <menu>
+        <menu class="tofadein">
             <div id="slider"></div>
             <a id="logo" class="link">N</a>
             <nav id="nav">
@@ -790,15 +823,24 @@
             
             // COLORS DAY/NIGHT 
             
-//             if(new Date().getHours() > 7 && new Date().getHours() < 17){
-//                 var r = $(":root");
-//                 r.css("--white", "#000"); 
-//                 r.css("--black", "#fff");
-//                 r.css("--background", "--white");
-//                 r.css("--text", "#222");
-//                 r.css("--active", "rgba(255,255,255,0.6)");
-//                 r.css('--cardB', 'var(--light)');
-//             }
+            if(new Date().getHours() < 7 || new Date().getHours() > 17){
+                var r = $(":root");
+                //BASIC
+                r.css("--white", "#000"); 
+                r.css('--light', '#222');
+                
+                r.css("--black", "#fff");
+                r.css('--grey', '#eee');
+                
+                r.css("--background", "#333");
+                r.css("--text", "#fff");
+                
+                r.css('--menu-link-color', '#222');
+                
+                //EDITABLE
+                r.css('--footer-primary', 'var(--secondary)');
+        
+            }
             
             // COLORS END
             
